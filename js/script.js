@@ -1,6 +1,6 @@
 $(document).ready(function () {
   $('.reviews__carousel').slick({
-    // infinite: true,
+    infinite: false,
     speed: 800,
     prevArrow: '<button type="button" class="slick-prev"></button>',
     nextArrow: '<button type="button" class="slick-next"> </button>',
