@@ -22,12 +22,14 @@ $(document).ready(function () {
 });
 
 let toogleMenu = document.querySelector('.toogle_menu'),
-    menu = document.querySelector('.promo__header-menu');
+    menu = document.querySelector('.promo__header-menu'),
+    body = document.querySelector('body');
 
 toogleMenu.onclick = function (e) {
     e.preventDefault;
     toogleMenu.classList.toggle('toogle_menu_active');
     menu.classList.toggle('promo__header-menu_active');
+    body.classList.toggle('hidden');
 }
 
 
