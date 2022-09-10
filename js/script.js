@@ -22,14 +22,14 @@ $(document).ready(function () {
 });
 
 let toogleMenu = document.querySelector('.toogle_menu'),
-    menu = document.querySelector('.promo__header-menu'),
-    body = document.querySelector('body');
+  menu = document.querySelector('.promo__header-menu'),
+  body = document.querySelector('body');
 
 toogleMenu.onclick = function (e) {
-    e.preventDefault;
-    toogleMenu.classList.toggle('toogle_menu_active');
-    menu.classList.toggle('promo__header-menu_active');
-    body.classList.toggle('hidden');
+  e.preventDefault;
+  toogleMenu.classList.toggle('toogle_menu_active');
+  menu.classList.toggle('promo__header-menu_active');
+  body.classList.toggle('hidden');
 }
 
 
@@ -77,14 +77,14 @@ $(document).ready(function () {
           dots: true
         }
       }
-     
+
     ]
   });
 });
 
 
-$(document).ready(function() {
-  $('.carousel__item a').magnificPopup({type:'image'});
+$(document).ready(function () {
+  $('.carousel__item a').magnificPopup({ type: 'image' });
 });
 
 function toggleActive(item) {
@@ -117,12 +117,7 @@ $('.button_mini').each(function (i) {
 
 
 
-//$('.js-open').each(function (i) {
-//   $(this).on('click', function (e) {
-//     e.preventDefault();
-//     $('.catalog-item__list').eq(i).addClass('catalog-item__list_active');
-//   });
-//создаем общую функцию для всех форм
+
 function formValidate(form) {
 
   $(form).validate({
@@ -137,7 +132,10 @@ function formValidate(form) {
         required: true,
         email: true
       },
-      phone: "required",
+      reviews: {
+        required: true,
+        minlength: 10
+      }
     },
 
     messages: {
@@ -149,33 +147,48 @@ function formValidate(form) {
         required: "Введите ваш почтовый адрес",
         email: "Адрес не соответствует name@domain.com"
       },
-      phone: "Введите номер телефона",
+      reviews: {
+        required: "Введите ваш отзыв",
+        minlength: jQuery.validator.format("Требуется не менее {0} символов")
+      }
 
     }
   });
 }
 
 // Вызываем функцию для каждого айдишника
-formValidate("#reviews-form");
+formValidate(".feed-form");
 
 
 
 $('form').submit(function (e) {
   e.preventDefault();
-  if($(this).valid()) {
+  if ($(this).valid()) {
     $.ajax({
-    type: "POST",
-    url: "mailer/smart.php",
-    data: $(this).serialize()
-  }).done(function() {
-    $(this).find("input").val("");
-    $('.overlay, #thanks').fadeIn('slow');
-    $('#consultation, #order').fadeOut('slow');
+      type: "POST",
+      url: "mailer/smart.php",
+      data: $(this).serialize(),
+      beforeSend: function () {
+        $('.ginger_btn').prop('disabled', true);
+        
+      }
+    }).done(function () {
+      
+      $(this).find("input").val("");
 
-    $('form').trigger("reset")
-  })
+      $('#reviews-form').modal('hide');
+      $('#success').modal('show');
+
+      $('.ginger_btn').prop('disabled', false);
+      $('form').trigger("reset")
+
+    }).fail(function () {
+      $('#reviews-form').modal('hide');
+      $('#error').modal('show');
+    })
+
   }
-  
+
 });
 
 
