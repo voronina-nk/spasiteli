@@ -7930,7 +7930,8 @@ p {
   .modal h3 {
     font-size: 20px;
   }
-  .modal .form-text, .modal label {
+  .modal .form-text,
+.modal label {
     font-size: 12px;
     margin-bottom: 4px;
     line-height: normal;
@@ -8150,26 +8151,6 @@ p {
   text-transform: none;
 }
 
-@media (min-width: 767px) {
-  .mfp-figure {
-    padding: 40px;
-    background: #F6F3EA;
-    border-radius: 16px;
-  }
-  img.mfp-img {
-    padding: 0;
-  }
-  .mfp-image-holder .mfp-close,
-.mfp-iframe-holder .mfp-close {
-    color: #73665C;
-    position: absolute;
-    top: 4px;
-    right: 14px;
-    font-size: 35px;
-    width: auto;
-    padding: 0;
-  }
-}
 @media (max-width: 991px) {
   .promo__first-book {
     height: 560px;
@@ -8220,6 +8201,24 @@ p {
   }
 }
 @media (max-width: 767px) {
+  .mfp-figure {
+    padding: 40px;
+    background: #F6F3EA;
+    border-radius: 16px;
+  }
+  img.mfp-img {
+    padding: 0;
+  }
+  .mfp-image-holder .mfp-close,
+.mfp-iframe-holder .mfp-close {
+    color: #73665C;
+    position: absolute;
+    top: 4px;
+    right: 14px;
+    font-size: 35px;
+    width: auto;
+    padding: 0;
+  }
   .description {
     padding-top: 152px;
   }
