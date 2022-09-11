@@ -8320,7 +8320,7 @@ p {
 }
 .biography__quote {
   max-width: 580px;
-  margin: 0 auto 60px;
+  margin: 60px auto;
   font-family: "PT Serif";
   font-style: italic;
   font-weight: 400;
