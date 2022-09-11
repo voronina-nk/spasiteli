@@ -7861,6 +7861,9 @@ p {
   color: #222222;
   width: 100%;
 }
+.feed-form .form-area {
+  margin-top: 19px;
+}
 .feed-form__input, .feed-form__area {
   border: 2px solid #D6D2C6;
   border-radius: 10px;
